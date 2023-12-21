@@ -1,5 +1,5 @@
 # SIEMHomeLab
-<h1>Security Information & Event Management - Wazuh Lindoe Docker</h1>
+<h1>Fortifying Digital Defenses: A Personal SIEM Implementation with Wazuh - Wazuh Lindoe Docker</h1>
 
  ### HyperlinkDoc.-[https://1drv.ms/w/s!AjoLJYJC2c5dnlesJYSCqkf7nspM?e=wvT2Ri)  
 
