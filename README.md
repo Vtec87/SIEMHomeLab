@@ -3,19 +3,46 @@
 
  ### HyperlinkDoc.-[https://1drv.ms/w/s!AjoLJYJC2c5dnlesJYSCqkf7nspM?e=wvT2Ri)  
 
-<h2>Description</h2>
+<h2>Introduction</h2>
 **Description:**
-The project involves the creation of a dedicated Cybersecurity Home Lab, specifically designed for comprehensive exploration and hands-on application of cybersecurity principles. This lab is focused on establishing a robust Security Information & Event Management (SIEM) environment, providing an immersive space for practical learning and experimentation within the realm of cybersecurity.
+Established a robust Security Information and Event Management (SIEM) environment using Wazuh within a Docker container hosted on Linode. Deployed agents on diverse platforms, including Windows 10, Ubuntu, Kali Linux, and Kali Purple, to monitor security configurations and promptly alert for potential vulnerabilities, malware, and unauthorized activities.
 <br />
 
 ![yIL5s5O](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/57b9b4ca-f2ab-4f9c-8459-b7761974da38) 
 
-<h2>Languages and Utilities Used</h2>
+**Key Features:**
+- **Comprehensive Monitoring:**
+  - Conducted continuous monitoring with Wazuh agents across multiple security aspects:
+    - *File Integrity Monitoring:* Tracked changes in directories, provided alerts for file additions/removals, document edits, and Windows registry modifications.
+    - *Vulnerability Detection:* Identified known vulnerabilities and malware threats on all monitored systems.
+    - *Threat Response:* Enabled active response to cybersecurity threats, including:
+      - *Brute Force Attack Detection:* Monitored and automatically blocked suspicious IP addresses.
+      - *Log Analysis:* Analyzed logs for potential threats and anomalies.
 
-- <b>PowerShell</b> 
-- <b>Reverse DNS</b>
+**System Components:**
+- **SIEM Server:**
+  - *Platform:* Linode
+  - *Operating System:* Ubuntu/Kali Linux
+  - *Containerization:* Docker
+  - *SIEM Tool:* Wazuh
+- **Monitored Devices:**
+  - *Operating Systems:* Windows 10, Ubuntu, Kali Linux, Kali Purple
+- **Additional Tools:**
+  - *PowerShell:* Utilized for automation and scripting tasks on Windows systems/VM.
+  - *Virtual Machine:* Optional Oracle VM for specific requirements.
 
-<h2>Environments Used </h2>
+**Technical Specifications:**
+- *System Requirements:* Minimum 4GB RAM for the server.
+
+**Benefits:**
+- **Enhanced Security Posture:**
+  - Continuous monitoring and threat detection significantly improved overall security posture.
+- **Early Threat Detection:**
+  - Timely alerts for vulnerabilities, malware, and unauthorized activity facilitated prompt response actions.
+- **Improved Visibility:**
+  - Consolidated log analysis across various systems provided a comprehensive view of the security posture.
+- **Active Threat Response:**
+  - Automated responses to brute force attacks and other threats mitigated potential damage.
 
 - <b>Wazuh-Open Source Tool</b> (21H2)
 
