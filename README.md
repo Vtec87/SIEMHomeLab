@@ -175,15 +175,125 @@ Created a container name for my Docker w/t Password and create the Docker.
 Copied my SSH Access key again and opened my terminal 
 ![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/7f2adc9e-d009-4b6d-b904-64a413763eff)
 ![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/9fa5f039-f320-4c46-82bc-5d68161503e4)
-"I've successfully accessed the system, and my next step is to update the repositories using the command `sudo apt update`. It's recommended to perform repository updates, especially if you're not operating 
+"I've successfully accessed the system, and my next step is to update the repositories using the command `sudo apt update`. It's recommended to perform repository updates, especially if you're not operating with root privileges." 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/17ca1b15-59e4-4789-82dd-3b9a88c9272d)
+Following that, I entered the command `sudo apt install docker.io docker-compose -y`. This installs both Docker and Docker Compose. 
+After this I use the Wazuh Doc. To copy the Git clone.  https://documentation.wazuh.com/current/deployment-options/docker/wazuh-container.html to clone the the git repository in one command. 
+git clone https://github.com/wazuh/wazuh-docker.git -b v4.7.0
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/eadb3111-f89b-4fb7-9f17-60287a99bea7)
+Note: It might be necessary to manually input the Git code into the terminal; however, once executed, the process should conclude successfully. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/bd9bc90c-7f0e-4054-b7df-8a9c4038fe6b)
+Next, to confirm the creation of the Docker, type "ls" in the terminal. You should see "Wazuh-docker" listed, indicating the successful creation of the Docker.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/cb5421fb-cbe6-458a-b67c-482d473e6f88)
+Next, type "cd Wazuh-docker/" to navigate into the directory. Once inside, use the command "ls" to confirm your location. This step is crucial as you are preparing to deploy a single-node or computer setup. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/7ff7aec4-9a84-4b96-8a68-ca498aec6ac5)
+To proceed, enter the command "cd single-node/" to navigate into the "single-node" directory. This step is essential as you prepare for the deployment of a single-node configuration. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/cda80905-e243-421d-b633-a1c8bbdfbea6)
+Before proceeding with any further actions, I revisited the Wazuh documentation to ensure I generate the necessary self-assigned certificates. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/e0bb4f3d-40f8-47ee-96e0-02ca868e5735)
+I copied the command `docker-compose -f generate-indexer-certs.yml run --rm generator` and pasted it into the same terminal where I was currently running commands.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/6af68644-7440-4fe3-9c81-c43f4697d569)
+Next, type the command `docker-compose up -d` to launch it in the background. This will handle all necessary processes for me.  
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/0afef12f-864f-45a6-ae4d-38ea41ee13ab)
+Since I have successfully executed the command, the system is now deploying a multi-tier application and fetching all the required images. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/adfe1899-150d-4c15-996f-d2e065f539d5)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/11f6060b-81f6-4878-b8f0-5ac79dc7beb8)
+To verify, I entered the command "docker stats" in the terminal. ![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/c30fba13-8ee7-4fef-a877-c73f8213a423)
+This provides a real-time view of my containers, displaying key metrics and resource usage. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/e1850e7b-8e2a-4491-8891-81745ac1165c)
+After confirming, I returned to the Linode environment to retrieve my Let's Encrypt (LE) reverse DNS. ![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/484966f0-e346-4e13-b46f-2387e4a76ebf)
+Specify where in the Wazuh documentation the password can be found, providing a link or specific section for easier reference. 
+User name: admin 
+*Password: SecretPassword *
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/e251d218-d8b4-4cb1-843b-fde043d0fe79)
+Now that This is completed, I will be adding agents. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/98bf83c0-9982-45dd-9bbb-072300280dea)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/f47c0c33-58fa-4914-aeac-3426db24f25d)
+Next I’m going to Deploy a new agent. ![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/b13cf8d9-72dd-4ae2-b0e3-95f97331a499)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/86cae612-2935-44f4-82b9-d6a79643137d)
+Next this process is straightforward but if new I have a awesome Video that helps with this entire process
+Also I needed to be sure to assign a server address:
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/762f2d09-5c64-4f0c-ad6b-14df246594ec)
+Note: The address you should use is the reverse DNS that you previously utilized. Simply copy and paste it into the FQDN, ensuring that the agent can access it. For example, "172-232-4-31.ip.linodeusercontent.com."
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/b252ea6b-39cb-4845-b116-a51c6d32dd2c)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/4751692c-1d15-4493-8466-acb5de258a26)
+Proceed by assigning an agent name; for example, I've used "kali_linux". Feel free to choose any name that suits your preference. Subsequently, select a group, usually indicated as "(default)". At this stage, your layout should mirror the following:
 
+After accomplishing this step, you'll receive the command to install the Wazuh agent. Simply copy and paste this command into your terminal:
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/0b65897f-2ccd-4cb4-b7b7-2781c4088286)
+copy and paste the BASH Command prompt:
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/278e29bc-cfbb-4de7-858c-7e1626ac30c3)
+bash sudo systemctl daemon-reload sudo systemctl enable wazuh-agent
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/d299d196-6760-4b6d-b4bf-3e2dddbf4244)
+Once this is completed, I now have my Kali Linux machine as one of the agents showing from my VM. Next, I will proceed with deploying a new agent for Windows.  
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/c4a2ee0b-1cc8-48fc-9160-e7a12ff7125d)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/c179b563-2eae-45af-9671-219820c20185)
+Next copy the ip address 172-232-4-31.ip.linodeusercontent.com and assign to the server address
+Open PowerShell from PC.  >copy the command to install Wazuh agent.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/5755f678-6324-4251-bcc9-7a2ab04cc7e3)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/4ac4731c-b419-4f86-9465-483d8665fe2d)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/c51baabe-ebcb-48b2-b932-f2ae333f835d)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/f456735d-2dcf-466f-8893-259270701854)
+Important: run the command for the agent 1st then once it shows completed type  “NET START WazuhSvc”. This is just like Linux net start was a svc 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/1ef9102f-b2f8-479f-b1f7-b938225fbbb3)
+Subsequently, I returned to my Wazuh dashboard.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/215cdcae-a6d2-47f6-aff1-3b3f1f72be1c)
+I've expanded the number of agents from 2 to 4.
 
+**Notes:**
+- When deploying Ubuntu, stick to the same process, ensuring accurate copying and pasting. For optimal installation of DPKG and updates, consult the instructions provided in this [link](https://www.linuxtechi.com/install-virtualbox-guest-additions-on-ubuntu/).
+**Note:**
+- If deploying Kali Purple Linux, updated instructions will be necessary. Follow the provided directions and exercise caution not to use Ctrl+V for pasting, as it might trigger a right-click. For details, refer to [this guide](https://www.kali.org/docs/virtualization/install-virtualbox-guest-additions/).
+  ![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/860baca0-9e18-4723-b86f-0d8824e1e2e4)
+Having successfully deployed four agents, my next task is to perform a Secure Configuration Assessment (SCA). To initiate this process, I will click on the eye icon, directing me to the SCA dashboard.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/0a040597-61c7-4028-be93-efbd5560a366)
 
+The SCA dashboard offers a comprehensive overview of the entire system, encompassing categories such as MITRE, and compliance dropdown options including CIS, NIST, GDPR, HIPAA, and more. This facilitates a meticulous assessment of the system's security configuration.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/20e3030b-7398-4352-b744-fa1f29934f53)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/a6f21a5e-94a7-4ac8-9c47-dca430adeba3)
+My SCA results indicate a 32% failure, with 262 items requiring further elaboration. This points to areas where security configuration improvements are needed to enhance overall system resilience and compliance
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/10788d24-b3e5-471c-81fc-f17305f5b792)
+Accessing the SCA provides a detailed breakdown of passed and failed items, accompanied by actionable insights on how to address and remedy the identified issues
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/57e5d77e-04b4-480f-bd2c-500f02a12156)
+For instance, delving deeper into the assessment reveals specific items such as the status of USB storage, providing insights into whether it's disabled or enabled.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/0e19e7a3-a61b-41a0-8088-ceda0bddc237)
+If that drill down to SSH b/c I can search for specific things like that. So not only is it showing me it tells me whats insecure and teaching me security. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/47e2bfd4-eab2-4620-ba46-954f3938434e)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/e3da759d-edf1-4526-a584-9971cad29696)
+For instance, clicking on a specific result not only provides an explanation of how to check and fix the issue but also offers the rationale behind the recommendation. Additionally, it includes relevant MITRE techniques for a comprehensive understanding. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/efa686f7-e6a0-4ec3-a355-8740fec76bb0)
+Exploring the Security Events section from the main dashboard allows me to investigate occurrences such as "Authentication failures," which may indicate potential "BRUTE FORCE ATTACKS." While there are currently no instances to confirm, this section also provides insights into the top five alerts for further analysis.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/0efc2c96-4ca4-4afb-b8ae-9a5679e447c5)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/ac790e1c-be7c-46d2-849e-426fe021aff7)
+Navigating to the "More" section from this screen opens up additional features, including insights into Vulnerabilities, Threat Detection & Response. This allows for a comprehensive view of potential vulnerabilities and a robust capability to respond to and manage detected threats effectively.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/fcb2348d-f51d-439f-af8e-3e6741eec093)
+To commence file monitoring on Windows, the first step is to navigate back to the home icon. As a side note, you also have the option to unpin the current agent to reveal all available agents.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/2c4da08e-1d62-4079-8520-e98fc178bf62)
+For users, especially those like me who are using it for the first time, the Integrity Monitoring tab will remain blank until you commence implementing and monitoring activities.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/24edabeb-6d0b-4469-98ee-5b5a653ef812)
+Clicking on the Inventory tab initiates a scan that has already inventoried all default files within the directory and registry keys. Currently, the system is configured to scan every 12 hours. However, if it detects any changes, it will promptly notify me through an alert.
 
+In the Files section, I can establish real-time notifications and define rule sets to efficiently manage and respond to events as they occur.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/87710b0a-ae36-4f57-8a56-db0e9e2429ba)
+First, navigate to "This PC" > "Program Files (x86)" > "ossec-agent" to access the configuration file for the agent.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/5b1ea7a2-fa1d-4df2-953b-d4c57848e4f0)
+Open with Note pad
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/285118bb-30d3-4926-af31-eafab368f237)
+Next, utilize the Ctrl + F search tool to locate the "syscheck" section in the configuration file. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/3632618b-18c1-4231-90b4-d2d6f01e1bfb)
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/b659f6f1-71fe-41fa-ab4f-4027bd86d1be)
+Select a location for the new rule. It is recommended to follow my path if you decide to implement this. Enter the following text in the space provided below:
 
+```xml
+<directories realtime="yes" report_changes="yes" check_all="yes">C:\Users\YourUserName\Desktop</directories>
+```
 
-
-
+Note: Replace "YourUserName" with your actual PC username. Remember to save after completing this task.
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/061d45b9-42bd-4140-9a26-0c14275f3889)
+Next, open PowerShell as an administrator, and type the following command: `Restart-Service -Name Wazuh` and press Enter. This will be done quickly. 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/db41c090-a82e-4478-8a52-65adbc72368d)
+Next, open the Wazuh Dashboard and navigate to the Integrity Monitoring Events section
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/0811591c-88f3-4d51-b5a5-5d822794f2db)
 
 
 
