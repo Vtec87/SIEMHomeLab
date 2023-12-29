@@ -69,6 +69,7 @@ Embark on an exciting journey as we dive into the intricacies of setting up Lino
 Your adventure begins with downloading Linode, a pivotal platform for our SIEM implementation. Follow the hyperlink below to initiate the download:
 
 [Download Linode](https://www.linode.com) 
+![image](https://github.com/Vtec87/SIEMHomeLab/assets/115051912/d24ef5bc-9633-4abc-9cf5-1ffa6d8cffc9)
 
 **Step 2: Installation Process**
 
