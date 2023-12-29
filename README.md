@@ -51,3 +51,35 @@ Established a robust Security Information and Event Management (SIEM) environmen
 <p align="center">
 Launch the utility: <br/>
 
+**Call to Action:**
+
+Ready to fortify your digital defenses? Download the comprehensive lab guide for an immersive learning experience. Stay updated with additional insights by following Victor Patterson Sr.
+
+*Warning: This lab is FUN! But buckle up for a delightful journey.*
+**Launching the Journey: Setting Up Linode**
+
+*Created and Completed by Victor Patterson Sr.*
+
+**Introduction:**
+
+Embark on an exciting journey as we dive into the intricacies of setting up Linode—a crucial initial step in fortifying our digital defenses. In this guide, I'll walk you through the installation process, laying the foundation for our comprehensive Security Information and Event Management (SIEM) lab.
+
+**Step 1: Downloading Linode**
+
+Your adventure begins with downloading Linode, a pivotal platform for our SIEM implementation. Follow the hyperlink below to initiate the download:
+
+[Download Linode](https://www.linode.com) 
+
+**Step 2: Installation Process**
+
+After setting up your Linode account, the installation process unfolds. The home screen post-installation will resemble the screenshot below, marking the commencement of our cybersecurity exploration.
+
+
+
+**Additional Insights:**
+
+- **Visual Companion:**
+  - For a visual guide through each step, refer to the accompanying screenshots.
+
+- **Target Audience:**
+  - Ideal for both beginners and seasoned tech enthusiasts ready to strengthen their digital defenses.
